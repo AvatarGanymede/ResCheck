@@ -13,7 +13,7 @@
 #include "Models/RRCRuleItemBase.h"
 #include "Models/RRCRuleModelBase.h"
 
-#define ALL_CONFIG_PATH TEXT("Blueprint'/ResourceRuleCheck/Configs/AllConfig.AllConfig'")
+#define ALL_CONFIG_PATH TEXT("Blueprint'/ResourceRuleCheck/ResourceCheckConfig.ResourceCheckConfig'")
 
 UBlueprint* URRCModelHelper::LoadAllConfig()
 {

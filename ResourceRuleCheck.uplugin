@@ -21,8 +21,23 @@
 			"LoadingPhase": "PreDefault"
 		},
 		{
+			"Name": "AutomationResCheck",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ResSaveCheck",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ResRenameCheck",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
 			"Name": "ResourceRuleCheck",
-			"Type": "Runtime",
+			"Type": "Editor",
 			"LoadingPhase": "Default"
 		}
 	]
