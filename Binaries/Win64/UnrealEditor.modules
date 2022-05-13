@@ -1,8 +1,0 @@
-{
-	"BuildId": "19505902",
-	"Modules": 
-	{
-		"ResourceRuleCheck": "UnrealEditor-ResourceRuleCheck.dll",
-		"RRCCore": "UnrealEditor-RRCCore.dll"
-	}
-}
