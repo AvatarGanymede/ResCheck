@@ -1,0 +1,14 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\users\\huahaileili\\documents\\unreal projects\\rrcproject\\plugins\\resourcerulecheck\\source\\resourcerulecheck\\private\\resourcerulecheck.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\huahaileili\\documents\\unreal projects\\rrcproject\\intermediate\\build\\win64\\rrcprojecteditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\users\\huahaileili\\documents\\unreal projects\\rrcproject\\plugins\\resourcerulecheck\\intermediate\\build\\win64\\unrealeditor\\development\\resourcerulecheck\\definitions.resourcerulecheck.h",
+            "c:\\users\\huahaileili\\documents\\unreal projects\\rrcproject\\plugins\\resourcerulecheck\\source\\resourcerulecheck\\public\\resourcerulecheck.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
