@@ -53,7 +53,7 @@ public:
 /**
  * 检查项的蓝图基类
  */
-UCLASS(Blueprintable)
+UCLASS(Abstract, Blueprintable)
 class RRCCORE_API URRCRuleItemBase : public UObject
 {
 	GENERATED_BODY()
@@ -132,7 +132,7 @@ public:
 	/**
 	 * 在资产重命名时的资源检查开始时，执行的检查逻辑
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, meta=(DisplayName = "资产重命名时的资源检查"))
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, meta=(DisplayName = "资产重命名时的资源检查"))
 	void DoCheckInRename(const FAssetData& InAssetData, const FString& InOldName);
 public:	
 	/**

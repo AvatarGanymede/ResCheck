@@ -49,6 +49,11 @@ void URRCRuleItemBase::DoCheckWithAssetDataAndOldName(const FAssetData& InAssetD
 	}
 }
 
+void URRCRuleItemBase::DoCheckInRename_Implementation(const FAssetData& InAssetData, const FString& InOldName)
+{
+	
+}
+
 bool URRCRuleItemBase::IsOpened(EResourceCheckType InResourceCheckType)
 {
 	bool bIsOpened = false;

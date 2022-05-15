@@ -12,8 +12,10 @@
 #include "Models/RRCResourceCheckConfigBase.h"
 #include "Models/RRCRuleItemBase.h"
 #include "Models/RRCRuleModelBase.h"
+#include "Threads/RuleItemTask.h"
 
 #define ALL_CONFIG_PATH TEXT("Blueprint'/ResourceRuleCheck/ResourceCheckConfig.ResourceCheckConfig'")
+
 
 UBlueprint* URRCModelHelper::LoadAllConfig()
 {
@@ -119,11 +121,15 @@ void URRCModelHelper::ExecuteAllRuleModels(EResourceCheckType InResourceCheckTyp
 						// 按优先级排序
 						RuleItems.Sort([](const URRCRuleItemBase& A, const URRCRuleItemBase& B) { return A.RulePriority > B.RulePriority; });
 						// 5.遍历检查项,执行检查逻辑
+						FGraphEventArray Tasks;
 						for (URRCRuleItemBase* SingleRuleItem : RuleItems)
 						{
-							FString LogContent = FString::Format(TEXT("当前执行的检查项是:{0}"), {SingleRuleItem->RuleName});
-							URRCLogHelper::PrintLogInRRC(LogContent, ERRCLogType::RRC_Log, true);
-							SingleRuleItem->DoCheck();
+							TSharedPtr<FRuleItemTaskParam> TargetRuleItemTaskParam = MakeShareable(new FRuleItemTaskParam(SingleRuleItem));
+							Tasks.Add(TGraphTask<FRuleItemTask>::CreateTask().ConstructAndDispatchWhenReady(TargetRuleItemTaskParam));
+						}
+						if (Tasks.Num() > 0)
+						{
+							FTaskGraphInterface::Get().WaitUntilTasksComplete(Tasks, ENamedThreads::GameThread);
 						}
 					}
 				}

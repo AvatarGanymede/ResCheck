@@ -8,6 +8,9 @@
 
 class URRCRuleModelBase;
 enum class EResourceCheckType;
+
+
+
 /**
  * 关于model相关的一些工具类方法
  */
@@ -23,7 +26,8 @@ public:
 	/**
 	 * 根据资源检查类型，获取对应的所有检查模块数据
 	 */
-	static void GetAllRuleModels(EResourceCheckType InResourceCheckType, TArray<class URRCRuleModelBase*>& AllRuleModels);
+	static void GetAllRuleModels(EResourceCheckType InResourceCheckType,
+	                             TArray<class URRCRuleModelBase*>& AllRuleModels);
 	/**
 	 * 根据指定的检查类型，执行检查模块
 	 */
@@ -31,11 +35,13 @@ public:
 	/**
 	 * 根据指定的检查类型和AssetData，执行检查模块
 	 */
-	static void ExecuteAllRuleModelsWithAssetData(EResourceCheckType InResourceCheckType, const FAssetData& InAssetData);
+	static void ExecuteAllRuleModelsWithAssetData(EResourceCheckType InResourceCheckType,
+	                                              const FAssetData& InAssetData);
 	/**
 	 * 根据指定的检查类型和AssetData还有旧名称，执行检查模块
 	 */
-	static void ExecuteAllRuleModelsWithAssetDataAndOldName(EResourceCheckType InResourceCheckType, const FAssetData& InAssetData, FString InOldName);
+	static void ExecuteAllRuleModelsWithAssetDataAndOldName(EResourceCheckType InResourceCheckType,
+	                                                        const FAssetData& InAssetData, FString InOldName);
 
 	/**
 	 * 获取项目uproject路径
@@ -72,8 +78,9 @@ public:
 	 * @return 是否在黑名单中
 	 */
 	UFUNCTION(BlueprintCallable)
-	static bool IsInBlackListPathsByAssetData(const FAssetData& InAssetData, const TArray<FDirectoryPath> AllBlackListPaths);
-	
+	static bool IsInBlackListPathsByAssetData(const FAssetData& InAssetData,
+	                                          const TArray<FDirectoryPath> AllBlackListPaths);
+
 	/**
 	 * 获取有效的检查路径
 	 * @param InResCheckPaths 包含白名单和黑名单的路径
