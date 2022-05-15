@@ -62,7 +62,7 @@ void URRCModelHelper::GetAllRuleModels(EResourceCheckType InResourceCheckType, T
 
 void URRCModelHelper::ExecuteAllRuleModels(EResourceCheckType InResourceCheckType)
 {
-	URRCLogHelper::PrintLogInRRC(TEXT("开始执行资源检查..."), ERRCLogType::RRC_Log, true);
+	URRCLogHelper::PrintLogInRRC(TEXT("开始执行资源检查..."), ERRCLogType::RRC_Log, true, true);
 	URRCLogHelper::PrintLogInRRC(TEXT("开始加载资源检查配置蓝图..."), ERRCLogType::RRC_Log, true);
 	// 1.加载资源检查配置蓝图
 	UBlueprint* ConfigBP = LoadAllConfig();
@@ -141,12 +141,13 @@ void URRCModelHelper::ExecuteAllRuleModels(EResourceCheckType InResourceCheckTyp
 	else
 	{
 		URRCLogHelper::PrintLogInRRC(TEXT("加载资源检查配置蓝图失败..."), ERRCLogType::RRC_Error, true);
-	}
+	}	
+	FMessageLog("RRCResCheck").Open();	
 }
 
 void URRCModelHelper::ExecuteAllRuleModelsWithAssetData(EResourceCheckType InResourceCheckType, const FAssetData& InAssetData)
 {
-	URRCLogHelper::PrintLogInRRC(TEXT("开始执行资源检查..."), ERRCLogType::RRC_Log, true);
+	URRCLogHelper::PrintLogInRRC(TEXT("开始执行资源检查..."), ERRCLogType::RRC_Log, true, true);
 	URRCLogHelper::PrintLogInRRC(TEXT("开始加载资源检查配置蓝图..."), ERRCLogType::RRC_Log, true);
 	// 1.加载资源检查配置蓝图
 	UBlueprint* ConfigBP = LoadAllConfig();
@@ -222,11 +223,12 @@ void URRCModelHelper::ExecuteAllRuleModelsWithAssetData(EResourceCheckType InRes
 	{
 		URRCLogHelper::PrintLogInRRC(TEXT("加载资源检查配置蓝图失败..."), ERRCLogType::RRC_Error, true);
 	}
+	FMessageLog("RRCResCheck").Open();	
 }
 
 void URRCModelHelper::ExecuteAllRuleModelsWithAssetDataAndOldName(EResourceCheckType InResourceCheckType, const FAssetData& InAssetData, FString InOldName)
 {
-	URRCLogHelper::PrintLogInRRC(TEXT("开始执行资源检查..."), ERRCLogType::RRC_Log, true);
+	URRCLogHelper::PrintLogInRRC(TEXT("开始执行资源检查..."), ERRCLogType::RRC_Log, true, true);
 	URRCLogHelper::PrintLogInRRC(TEXT("开始加载资源检查配置蓝图..."), ERRCLogType::RRC_Log, true);
 	// 1.加载资源检查配置蓝图
 	UBlueprint* ConfigBP = LoadAllConfig();
@@ -299,8 +301,9 @@ void URRCModelHelper::ExecuteAllRuleModelsWithAssetDataAndOldName(EResourceCheck
 	}
 	else
 	{
-		URRCLogHelper::PrintLogInRRC(TEXT("加载资源检查配置蓝图失败..."), ERRCLogType::RRC_Error, true);
+		URRCLogHelper::PrintLogInRRC(TEXT("加载资源检查配置蓝图失败..."), ERRCLogType::RRC_Error, true, true);
 	}
+	FMessageLog("RRCResCheck").Open();	
 }
 
 FString URRCModelHelper::GetProjectFilePath()
