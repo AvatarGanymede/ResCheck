@@ -2,11 +2,21 @@
 
 #include "RRCCore.h"
 
+#include "MessageLogModule.h"
+
 #define LOCTEXT_NAMESPACE "FRRCCoreModule"
 
 void FRRCCoreModule::StartupModule()
 {
-	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+	// 注册MessageLog类别
+	FMessageLogModule& MessageLogModule = FModuleManager::LoadModuleChecked<FMessageLogModule>("MessageLog");
+	{
+		FMessageLogInitializationOptions InitOptions;
+		InitOptions.bShowPages = true;
+		InitOptions.bAllowClear = true;
+		InitOptions.bShowFilters = true;
+		MessageLogModule.RegisterLogListing("RRCResCheck", LOCTEXT("FRRCCoreModule", "RRC Res Check"), InitOptions);
+	}
 }
 
 void FRRCCoreModule::ShutdownModule()

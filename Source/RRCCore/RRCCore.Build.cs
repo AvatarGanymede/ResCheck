@@ -40,6 +40,7 @@ public class RRCCore : ModuleRules
 				"SlateCore",
 				"EditorSubsystem",
 				"UnrealEd",
+				"MessageLog",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

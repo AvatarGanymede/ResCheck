@@ -7,25 +7,46 @@
 #include "RRCCoreSubsystem.h"
 DEFINE_LOG_CATEGORY(RRCLog);
 
-void URRCLogHelper::PrintLogInRRC(const FString& LogContent,const TEnumAsByte<ERRCLogType> Verbosity, const bool bSaveToAllLog)
+#define LOCTEXT_NAMESPACE "URRCLogHelper"
+
+void URRCLogHelper::PrintLogInRRC(const FString& LogContent,const TEnumAsByte<ERRCLogType> Verbosity, const bool bSaveToAllLog, const bool bShowMessageLog)
 {
 	FString WholeLog(TEXT(""));
+	FText WholeLogText = FText::FromString(WholeLog);
 	switch (Verbosity)
 	{
 	case ERRCLogType::RRC_Error:
 		WholeLog = FString(TEXT("[RRC_Error]:"));
 		WholeLog.Append(LogContent);
-		UE_LOG(RRCLog, Error, TEXT("%s"), *WholeLog);
+		WholeLogText = FText::FromString(WholeLog);
+		FMessageLog("RRCResCheck").Error(WholeLogText);
+		// 显示messagelog小弹窗
+		if (bShowMessageLog)
+		{
+			FMessageLog("RRCResCheck").Notify(WholeLogText, EMessageSeverity::Error, true);
+		}
 		break;
 	case ERRCLogType::RRC_Warning:
 		WholeLog = FString(TEXT("[RRC_Warning]:"));
 		WholeLog.Append(LogContent);
-		UE_LOG(RRCLog, Warning, TEXT("%s"), *WholeLog);
+		WholeLogText = FText::FromString(WholeLog);
+		FMessageLog("RRCResCheck").Warning(FText::FromString(WholeLog));
+		// 显示messagelog小弹窗
+		if (bShowMessageLog)
+		{
+			FMessageLog("RRCResCheck").Notify(WholeLogText, EMessageSeverity::Warning, true);
+		}
 		break;
 	case ERRCLogType::RRC_Log:
 		WholeLog = FString(TEXT("[RRC_Log]:"));
 		WholeLog.Append(LogContent);
-		UE_LOG(RRCLog, Log, TEXT("%s"), *WholeLog);
+		WholeLogText = FText::FromString(WholeLog);
+		FMessageLog("RRCResCheck").Info(FText::FromString(WholeLog));
+		// 显示messagelog小弹窗
+		if (bShowMessageLog)
+		{
+			FMessageLog("RRCResCheck").Notify(WholeLogText, EMessageSeverity::Info, true);
+		}
 		break;
 	}
 	// 保存到AllLog，即保存到本地文件
@@ -50,3 +71,5 @@ void URRCLogHelper::SaveLogToFile(const TArray<FString> AllLog)
 		WriteLine(FString::Printf(TEXT("%s"), *SingleDebugInfo));
 	}
 }
+
+#undef LOCTEXT_NAMESPACE

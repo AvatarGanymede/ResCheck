@@ -33,9 +33,10 @@ public:
 	/// @param LogContent 日志内容
 	/// @param Verbosity 日志级别
 	/// @param bSaveToAllLog 是否需要保存到本地
+	/// @param bShowMessageLog 是否显示messagelog小弹窗
 	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "RRC")
-	static void PrintLogInRRC(const FString& LogContent,const TEnumAsByte<ERRCLogType> Verbosity, const bool bSaveToAllLog = false);
+	static void PrintLogInRRC(const FString& LogContent,const TEnumAsByte<ERRCLogType> Verbosity, const bool bSaveToAllLog = false, const bool bShowMessageLog = false);
 
 	/**
 	 * 将所有日志保存到本地文件中
