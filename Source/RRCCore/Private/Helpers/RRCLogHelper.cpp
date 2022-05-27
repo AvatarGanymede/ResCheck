@@ -3,6 +3,7 @@
 
 #include "Helpers/RRCLogHelper.h"
 
+#include "Logging/MessageLog.h"
 #include "Editor.h"
 #include "RRCCoreSubsystem.h"
 DEFINE_LOG_CATEGORY(RRCLog);
